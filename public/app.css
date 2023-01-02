@@ -1,0 +1,27 @@
+body{
+    font-family: 'Comfortaa', cursive;
+}
+.masthead {
+    height: 25vh;
+    background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .auth{
+    color: #62ff00 !important;
+    background: #353535;
+    border-radius: 25%;
+    margin-right: 1rem;
+  }
+.carousel-inner{
+    height: 50vh;
+}
+.shows-tab{
+    margin: 0 auto !important;
+    width: 80%;
+    margin-top: 5rem;
+}
+.card{
+    float:left;
+}
