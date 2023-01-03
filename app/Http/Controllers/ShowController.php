@@ -14,7 +14,9 @@ class ShowController extends Controller
      */
     public function index()
     {
-        //
+        $shows = Show::latest()->paginate(10);
+        // return $shows;
+        return view('admin.shows', compact('shows'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ShowController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.showCreate");
     }
 
     /**

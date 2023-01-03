@@ -25,3 +25,6 @@ body{
 .card{
     float:left;
 }
+.admin-sidebar{
+    width: 12% !important;
+}

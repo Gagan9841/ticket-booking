@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Movie;
+use App\Models\Show;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -14,7 +16,13 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::with(['category','show'])->latest()->paginate(10);
+        // return $movies;
+        return view("admin.movies", compact(
+            'movies'
+        ));
+
+        
     }
 
     /**
@@ -24,7 +32,13 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get(['id','name']);
+        $shows = Show::get(['id','show_time']);
+
+        // return $shows;
+        return view("admin.moviesCreate", compact([
+            'categories', 'shows'
+        ]));
     }
 
     /**
