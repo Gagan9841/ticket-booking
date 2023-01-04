@@ -17,7 +17,13 @@
             @foreach ($shows as $show )
             <tr>
               <td>{{$show->show_time}}</td>
-              <td><a class="btn btn-success me-1" href="#">Edit</a><a class="btn btn-danger  " href="#">Delete</a></td>
+              <td><a class="btn btn-success me-1" href="{{route("shows.edit",$show->id)}}">Edit</a>
+                <form action="{{route('shows.delete',$show->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" role="button">Delete</button>
+            </form>
+            </td>
             </tr>
             @endforeach
         </tbody>

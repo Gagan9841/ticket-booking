@@ -39,6 +39,11 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/admin/shows', [ShowController::class, 'index']);
     Route::get('/admin/shows/showCreate', [ShowController::class, 'create']);
+    Route::post('/admin/shows/showAdd', [ShowController::class, 'store']);
+    Route::get('/admin/shows/{show_time}/showEdit', [ShowController::class, 'edit'])->name('shows.edit');
+    Route::patch('/admin/shows/{show_time}/showUpdate', [ShowController::class, 'update'])->name('shows.update');
+    Route::delete('/admin/shows/{show_time}/showDelete', [ShowController::class, 'destroy'])->name('shows.delete');
+    
 
     Route::get('/admin/category', [CategoryController::class, 'index']);
     Route::get('/admin/category/categoryCreate', [CategoryController::class, 'create']);

@@ -6,10 +6,8 @@
         </div>
 
         <ul class="list-unstyled components mb-5">
-          <li class="active">
             <a href="/admin/dashboard" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-          </li>
           <li>
             <a href="/admin/shows" class="nav-link px-0 align-middle">
                 <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Shows</span></a>

@@ -9,6 +9,8 @@ class Show extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['show_time'];
+
     public function movie(){
         return $this->belongsToMany(Movie::class);
     }

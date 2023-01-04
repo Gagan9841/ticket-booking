@@ -37,7 +37,16 @@ class ShowController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+
+        request()->validate([
+            "show_time" => "required",
+        ]);
+
+        Show::create([
+            "show_time" => $request->show_time,
+        ]);
+        return redirect('/admin/shows');
     }
 
     /**
@@ -57,9 +66,10 @@ class ShowController extends Controller
      * @param  \App\Models\Show  $show
      * @return \Illuminate\Http\Response
      */
-    public function edit(Show $show)
+    public function edit(Show $show_time)
     {
-        //
+        // return $show_time;
+        return view("admin.showsEdit", compact('show_time'));
     }
 
     /**
@@ -69,9 +79,18 @@ class ShowController extends Controller
      * @param  \App\Models\Show  $show
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Show $show)
+    public function update(Request $request, Show $show_time)
     {
-        //
+        // return $show_time;
+        // return $request;
+        request()->validate([
+            "show_time" => "required",
+        ]);
+        $show_time->update([
+            "show_time"=> $request->show_time,
+        ]);
+
+        return redirect('/admin/shows');
     }
 
     /**
@@ -80,8 +99,11 @@ class ShowController extends Controller
      * @param  \App\Models\Show  $show
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Show $show)
+    public function destroy(Show $show_time)
     {
-        //
+        // return $show_time;
+
+        $show_time->delete();
+        return redirect()->back()->with('warning',"Show time deleted successfully.");
     }
 }
