@@ -46,7 +46,7 @@ class ShowController extends Controller
         Show::create([
             "show_time" => $request->show_time,
         ]);
-        return redirect('/admin/shows');
+        return redirect('/admin/shows')->with('success',"Show time Added successfully.");
     }
 
     /**
@@ -90,7 +90,7 @@ class ShowController extends Controller
             "show_time"=> $request->show_time,
         ]);
 
-        return redirect('/admin/shows');
+        return redirect('/admin/shows')->with('info',"Show time Updated successfully");
     }
 
     /**

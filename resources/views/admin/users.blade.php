@@ -28,10 +28,13 @@
                     User
                     @endif
             </td>
-              <td><a class="btn btn-success me-1" href="#">Edit</a><a class="btn btn-danger  " href="#">Delete</a></td>
+              <td><a class="btn btn-success me-1" href="#"><i class="bi bi-pencil-square"></i></a><a class="btn btn-danger  " href="#"><i class="bi bi-trash"></i></a></td>
             </tr>
             @endforeach
         </tbody>
       </table>
+      @if(count($users) > 0)
+          {{ $users->links('pagination::bootstrap-5')}}
+          @endif
   </div>
 @endsection

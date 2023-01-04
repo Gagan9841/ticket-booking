@@ -36,7 +36,7 @@
 
     @include('layouts.adminNav')
     @include('layouts.adminSidebar')
-    <div id="flash-message" class="me-5 mt-1 row text-center ">
+    <div id="flash-message" class="me-5 mt-1 row text-center">
         @include('layouts.flashMessage')
     </div>
     @yield('content')

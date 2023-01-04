@@ -17,16 +17,19 @@
             @foreach ($shows as $show )
             <tr>
               <td>{{$show->show_time}}</td>
-              <td><a class="btn btn-success me-1" href="{{route("shows.edit",$show->id)}}">Edit</a>
-                <form action="{{route('shows.delete',$show->id)}}" method="post">
+              <td><a class="btn btn-success me-1" href="{{route("shows.edit",$show->id)}}"><i class="bi bi-pencil-square"></i></a>
+                <form class="d-inline-block" action="{{route('shows.delete',$show->id)}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger" role="button">Delete</button>
+                    <button type="submit" class="btn btn-danger" role="button"><i class="bi bi-trash"></i></button>
             </form>
             </td>
             </tr>
             @endforeach
         </tbody>
       </table>
+      @if(count($shows) > 0)
+          {{ $shows->links('pagination::bootstrap-5')}}
+          @endif
   </div>
 @endsection

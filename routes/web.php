@@ -47,6 +47,12 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/admin/category', [CategoryController::class, 'index']);
     Route::get('/admin/category/categoryCreate', [CategoryController::class, 'create']);
+    Route::post('/admin/category/categoryAdd', [CategoryController::class, 'store']);
+    Route::get('/admin/category/{category_name}/categoryEdit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::patch('/admin/category/{category_name}/categoryUpdate', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/admin/category/{category_name}/categoryDelete', [CategoryController::class, 'destroy'])->name('category.delete');
+
+
 
     Route::get('/admin/movies', [MovieController::class, 'index'])->name('admin.movies');
     Route::get('admin/movies/movieCreate', [MovieController::class, 'create'])->name('movie.create');
