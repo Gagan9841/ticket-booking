@@ -22,18 +22,21 @@ class MovieFactory extends Factory
     {
         $name = fake()->name();
         $desc = fake()->sentence();
+        $img = fake()->name();
         $cat_id = function(){
             return Category::factory()->create()->id;
         };
         $show_id = function () {
             return Show::factory()->create()->id;
         };
+
         return [
             'name'=>$name,
             'description'=>$desc,
             'slug' => Str::slug($name),
             'category_id'=>$cat_id,
             'show_id'=>$show_id,
+            'movie_img'=> $img,
         ];
     }
 }

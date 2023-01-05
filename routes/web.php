@@ -43,7 +43,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/shows/{show_time}/showEdit', [ShowController::class, 'edit'])->name('shows.edit');
     Route::patch('/admin/shows/{show_time}/showUpdate', [ShowController::class, 'update'])->name('shows.update');
     Route::delete('/admin/shows/{show_time}/showDelete', [ShowController::class, 'destroy'])->name('shows.delete');
-    
+
 
     Route::get('/admin/category', [CategoryController::class, 'index']);
     Route::get('/admin/category/categoryCreate', [CategoryController::class, 'create']);
@@ -56,6 +56,14 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/admin/movies', [MovieController::class, 'index'])->name('admin.movies');
     Route::get('admin/movies/movieCreate', [MovieController::class, 'create'])->name('movie.create');
+    Route::post('/admin/movies/movieAdd', [MovieController::class, 'store']);
+    Route::get('/admin/movies/{movie}/movieEdit', [MovieController::class, 'edit'])->name('movies.edit');
+    Route::patch('/admin/movies/{movie}/movieUpdate', [MovieController::class, 'update'])->name('movies.update');
+    Route::delete('/admin/movies/{movie}/movieDelete', [MovieController::class, 'destroy'])->name('movies.delete');
+
+
+
+
 
     Route::get('/admin/users', [ProfileController::class, 'index']);
 

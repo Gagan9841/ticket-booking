@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Show;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -22,7 +23,7 @@ class MovieController extends Controller
             'movies'
         ));
 
-        
+
     }
 
     /**
@@ -49,7 +50,25 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        // request()->validate([
+        //     "movie_img" => "required|image",
+        // ]);
+        $imageName = time().'.'.$request->movie_img->extension();
+        $imagePath = "/image/movie/{$imageName}";
+        // return $imagePath;
+        $request->movie_img->move(public_path('/image/movie'),$imageName);
+        Movie::create([
+            "name" => $request->movie_name,
+            "slug" => Str::slug($request->movie_name),
+            "description" => $request->desc,
+            "category_id" => $request->category_id,
+            "show_id" => $request->showTime_id,
+            "movie_img" => $imagePath,
+        ]);
+        return redirect('/admin/movies')->with('success',"Movie Added successfully.");
+
+
     }
 
     /**
@@ -71,7 +90,8 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        // return $movie;
+        return view('admin.moviesEdit', compact('movie'));
     }
 
     /**
@@ -83,7 +103,20 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        // return $request;
+        // if($request->movie_img=='img_delete'){
+        //     $movie->movie_img->delete();
+        // },
+        $movie->update([
+            "name" => $request->movie_name,
+            "slug" => Str::slug($request->movie_name),
+            "description" => $request->desc,
+            "category_id" => $request->category_id,
+            "show_id" => $request->showTime_id,
+            // "movie_img" => $imagePath,
+        ]);
+        return redirect('/admin/movies')->with('info',"Movie Updated successfully.");
+
     }
 
     /**
@@ -94,6 +127,7 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+         $movie->delete();
+        return redirect()->back()->with('warning',"Movie deleted successfully.");
     }
 }

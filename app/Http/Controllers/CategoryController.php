@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category_name)
     {
-        // return $category;
+        return $category_name;
         return view("admin.categoryEdit", compact('category_name'));
     }
 
@@ -95,7 +95,7 @@ class CategoryController extends Controller
         ]);
 
         return redirect("/admin/category")->with('info', "category Updated Successfully");
-        
+
     }
 
     /**
@@ -109,6 +109,6 @@ class CategoryController extends Controller
         $category_name->delete();
         return redirect()->back()->with('warning',"Category deleted successfully.");
 
-        
+
     }
 }
