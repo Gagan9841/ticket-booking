@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
+Route::get('/home', [MovieController::class, 'userIndex']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -62,10 +64,11 @@ Route::middleware('admin')->group(function () {
     Route::delete('/admin/movies/{movie}/movieDelete', [MovieController::class, 'destroy'])->name('movies.delete');
 
 
-
-
-
     Route::get('/admin/users', [ProfileController::class, 'index']);
+
+});
+
+Route::middleware('user')->group(function () {
 
 });
 

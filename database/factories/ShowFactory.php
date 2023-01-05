@@ -16,7 +16,7 @@ class ShowFactory extends Factory
      */
     public function definition()
     {
-        $showtime = fake()->name();
+        $showtime = fake()->dateTime();
         return [
             'show_time'=>$showtime,
         ];

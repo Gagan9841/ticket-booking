@@ -1,4 +1,4 @@
-        <div class="wrapper w-25 float-left min-vh-100 d-flex align-items-stretch">
+        <div class="wrapper w-25 float-start min-vh-100 d-flex align-items-stretch">
 			<nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">

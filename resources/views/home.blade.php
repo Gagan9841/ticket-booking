@@ -39,9 +39,31 @@
               </div>
 
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                @foreach ( $movies as $movie)
+                @if ($movie->show[0]->show_time<today())
+
+
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <figure class="movie">
+                        <div class="movie__hero">
+                          <img src="https://www.mensjournal.com/wp-content/uploads/2018/10/rambo-main-3.jpg?quality=86&strip=all" alt="Rambo" class="movie__img">
+                        </div>
+                        <div class="movie__content">
+                          <div class="movie__title">
+                            <h1 class="heading__primary">{{$movie->name}} <i class="fas fa-fire"></i></h1>
+                            <div class="movie__tag movie__tag--1">#action</div>
+                            <div class="movie__tag movie__tag--2">#thriller</div>
+                          </div>
+                          <p class="movie__description">
+                            First Blood is a 1982 American action film directed by Ted Kotcheff, and co-written by Sylvester
+                            Stallone, who also stars as Vietnam War veteran John Rambo.
+                          </p>
+                        </div>
+                        <div class="movie__price">$12.56</div>
+                      </figure>
                 </div>
+                @endif
+                @endforeach
               </div>
             </div>
             <div class="card col-4">

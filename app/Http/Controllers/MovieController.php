@@ -22,8 +22,15 @@ class MovieController extends Controller
         return view("admin.movies", compact(
             'movies'
         ));
+    }
 
-
+    public function userIndex()
+    {
+        $movies = Movie::with(['category','show'])->latest()->paginate(10);
+        // return $movies;
+        return view("home", compact(
+            'movies'
+        ));
     }
 
     /**
