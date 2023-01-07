@@ -1,6 +1,6 @@
 @extends('layouts.adminApp')
 @section('content')
-    <div id="content" class="p-4 p-md-5 pt-5 float-left w-75">
+    <div id="content" class="p-4 p-md-5 pt-5 float-start w-75">
         <div class="row">
             <div class="col-12">
                 <a href="movies/movieCreate" class="btn btn-primary mb-1">Add New</a>
@@ -13,6 +13,7 @@
                     <th scope="col">Movie Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Show time</th>
+                    <th scope="col">Movie Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                         <td>{{ $movie->name }}</td>
                         <td>{{ $movie->category->name }}</td>
                         <td>{{ $movie->show[0]->show_time }}</td>
+                        <td>{{ $movie->status }}</td>
                         <td><a class="btn btn-success me-1" href="{{route("movies.edit",$movie->id)}}"><i class="bi bi-pencil-square"></i></a>
                             <form class="d-inline-block" action="{{route('movies.delete',$movie->id)}}" method="post">
                                 @csrf

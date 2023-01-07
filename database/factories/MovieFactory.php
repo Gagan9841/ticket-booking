@@ -29,6 +29,7 @@ class MovieFactory extends Factory
         $show_id = function () {
             return Show::factory()->create()->id;
         };
+        $status = fake()->name();
 
         return [
             'name'=>$name,
@@ -37,6 +38,7 @@ class MovieFactory extends Factory
             'category_id'=>$cat_id,
             'show_id'=>$show_id,
             'movie_img'=> $img,
+            'status'=>$status,
         ];
     }
 }

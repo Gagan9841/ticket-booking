@@ -25,7 +25,7 @@
       <textarea name="desc" name="movie_desc" id="movie_desc" rows="10" class="form-control " placeholder="Add short description about the movie...">{{$movie->description}}</textarea>
       {{-- <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"> --}}
     </div>
-    <div class="col-12">
+    <div class="col-6">
       <label for="movie_show" class="form-label">Show Time</label>
       <select class="form-control" name="showTime_id">
 
@@ -34,6 +34,17 @@
             <option value="{{ $show->id }} {{ ($category->id == $movie->show_id) ? 'selected' : '' }}">{{ $show->show_time }}</option>
             @endforeach
       </select>
+    </div>
+    <div class="col-6">
+        <label class="form-label" for="movie_status">Movie Status</label>
+        <div id="movie_status border-3" class="movie_stat">
+        <input type="radio" class="form-check-input" name="movie_status" value="Now Showing" id="now-showing">
+        <label for="now-showing" class="form-check-label me-5" > Now Showing</label>
+        <input type="radio" class="form-check-input" name="movie_status" value="Next Show" id="next-show">
+        <label for="next-show" class="form-check-label me-5" >Next Show</label>
+        <input type="radio" class="form-check-input" name="movie_status" value="Comming Soon" id="comming-soon">
+        <label for="comming-soon" class="form-check-label" > Comming Soon</label>
+    </div>
     </div>
     <div class="col-6">
         <img src="{{$movie->movie_img}}" alt="movie-img" width="50px" height="50px">

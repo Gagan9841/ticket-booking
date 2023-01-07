@@ -57,10 +57,6 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        // request()->validate([
-        //     "movie_img" => "required|image",
-        // ]);
         $imageName = time().'.'.$request->movie_img->extension();
         $imagePath = "/image/movie/{$imageName}";
         // return $imagePath;
@@ -72,6 +68,7 @@ class MovieController extends Controller
             "category_id" => $request->category_id,
             "show_id" => $request->showTime_id,
             "movie_img" => $imagePath,
+            "status" => $request->movie_status,
         ]);
         return redirect('/admin/movies')->with('success',"Movie Added successfully.");
 
@@ -110,16 +107,13 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        // return $request;
-        // if($request->movie_img=='img_delete'){
-        //     $movie->movie_img->delete();
-        // },
         $movie->update([
             "name" => $request->movie_name,
             "slug" => Str::slug($request->movie_name),
             "description" => $request->desc,
             "category_id" => $request->category_id,
             "show_id" => $request->showTime_id,
+            "status" => $request->movie_status,
             // "movie_img" => $imagePath,
         ]);
         return redirect('/admin/movies')->with('info',"Movie Updated successfully.");
@@ -136,5 +130,17 @@ class MovieController extends Controller
     {
          $movie->delete();
         return redirect()->back()->with('warning',"Movie deleted successfully.");
+    }
+
+    public function ticketBook(Movie $movies)
+    {
+        // return $movies;
+        // $shows = Show::get('id')->where('id',$movies->show_id);
+        // return $shows;
+        $shows = Show::where(['id','show_time']);
+        return view('movieBook', compact(['movies']));
+        // return view("movieBook", compact([
+        //     'categories', 'shows'
+        // ]));
     }
 }

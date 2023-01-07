@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShowController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,15 +48,12 @@ Route::middleware('admin')->group(function () {
     Route::patch('/admin/shows/{show_time}/showUpdate', [ShowController::class, 'update'])->name('shows.update');
     Route::delete('/admin/shows/{show_time}/showDelete', [ShowController::class, 'destroy'])->name('shows.delete');
 
-
     Route::get('/admin/category', [CategoryController::class, 'index']);
     Route::get('/admin/category/categoryCreate', [CategoryController::class, 'create']);
     Route::post('/admin/category/categoryAdd', [CategoryController::class, 'store']);
     Route::get('/admin/category/{category_name}/categoryEdit', [CategoryController::class, 'edit'])->name('category.edit');
     Route::patch('/admin/category/{category_name}/categoryUpdate', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/admin/category/{category_name}/categoryDelete', [CategoryController::class, 'destroy'])->name('category.delete');
-
-
 
     Route::get('/admin/movies', [MovieController::class, 'index'])->name('admin.movies');
     Route::get('admin/movies/movieCreate', [MovieController::class, 'create'])->name('movie.create');
@@ -69,7 +68,9 @@ Route::middleware('admin')->group(function () {
 });
 
 Route::middleware('user')->group(function () {
-
+    Route::get('/home/movie/{movies}/bookNow', [TicketController::class, 'create'])->name('ticket.book');
+    Route::post('/home/movie/booked', [TicketController::class, 'store']);
+    Route::get('/home/tickets', [TicketController::class, 'index']);
 });
 
 Route::middleware('auth')->group(function () {

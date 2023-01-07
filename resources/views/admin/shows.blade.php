@@ -1,6 +1,6 @@
 @extends('layouts.adminApp')
 @section('content')
-<div id="content" class="p-4 p-md-5 pt-5 float-left w-75">
+<div id="content" class="p-4 p-md-5 pt-5 float-start w-75">
     <div class="row">
         <div class="col-12">
             <a href="shows/showCreate" class="btn btn-primary mb-1">Add New</a>

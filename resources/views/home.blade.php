@@ -40,9 +40,7 @@
 
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 @foreach ( $movies as $movie)
-                @if ($movie->show[0]->show_time<today())
-
-
+                @if ($movie->status==="Now Showing")
                 <div class="card-body">
                     <figure class="movie">
                         <div class="movie__hero">
@@ -51,15 +49,13 @@
                         <div class="movie__content">
                           <div class="movie__title">
                             <h1 class="heading__primary">{{$movie->name}} <i class="fas fa-fire"></i></h1>
-                            <div class="movie__tag movie__tag--1">#action</div>
-                            <div class="movie__tag movie__tag--2">#thriller</div>
+                            <div class="movie__tag movie__tag--1">{{$movie->category->name}}</div>
                           </div>
                           <p class="movie__description">
-                            First Blood is a 1982 American action film directed by Ted Kotcheff, and co-written by Sylvester
-                            Stallone, who also stars as Vietnam War veteran John Rambo.
+                           {{$movie->description}}
                           </p>
                         </div>
-                        <div class="movie__price">$12.56</div>
+                        <div class="movie__price"><a href="{{route("ticket.book",$movie->id)}}">BOOK NOW</a></div>
                       </figure>
                 </div>
                 @endif
