@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Show;
+use App\Models\TicketRate;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
 
@@ -18,14 +19,16 @@ class TicketController extends Controller
      */
     public function index(Show $show)
     {
-        $tickets = Ticket::with(['movie','show'])->get();
+        $tickets = Ticket::where('user_id',auth()->user()->id)->with(['movie','show','user'])->get();
         // return $tickets;
+        // where('user_id',auth()->user()->id)
         $ticket_showtime = $tickets[0]->show_time;
         $show = Show::whereId($ticket_showtime)->get();
+        $rate = TicketRate::get();
         // return $ticket_showtime;
         // return $ticket_showtime;
         // return $show;
-        return view('tickets',compact(['tickets','show']));
+        return view('tickets',compact(['tickets','show','rate']));
     }
 
     /**
@@ -36,7 +39,9 @@ class TicketController extends Controller
     public function create(Movie $movies)
     {
         $shows = Show::get(['id','show_time']);
-        return view('movieBook', compact(['movies','shows']));
+        $rate = TicketRate::get();
+
+        return view('movieBook', compact(['movies','shows','rate']));
     }
 
     /**
@@ -47,12 +52,15 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
+        // $total_price = $request->ticket_rate * $request->num_of_seat;
+        // return $total_price;
         Ticket::create([
             "ticket_no" => $request->ticket_no,
             "user_id" => $request->user_name,
             "movie_id" => $request->movie_name,
             "seat_no" => json_encode($request->seat),
             "show_time" => $request->show_time,
+            "total_price" => $request->ticket_rate*$request->num_of_seat,
         ]);
         return redirect('/home/tickets')->with('success',"Ticket Booked successfully.");
     }

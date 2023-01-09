@@ -32,12 +32,14 @@ function updateTextArea() {
      var allNumberVals = [];
      var allMovieVals = [];
      var allSeatsVals = [];
+     var allpriceVals = [];
 
      //Storing in Array
      allNameVals.push($("#Username").val());
      allticketVals.push($("#ticketNo").val());
      allMovieVals.push($("#movie").val());
      allNumberVals.push($("#Numseats").val());
+     allpriceVals.push($("#ticket_rate").val()*$("#Numseats").val());
      $('#seatsBlock :checked').each(function() {
        allSeatsVals.push($(this).val());
      });
@@ -48,6 +50,7 @@ function updateTextArea() {
      $('#movieDisplay').val(allMovieVals);
      $('#NumberDisplay').val(allNumberVals);
      $('#seatsDisplay').val(allSeatsVals);
+     $('#rateDisplay').val(allpriceVals);
     }
   else
     {

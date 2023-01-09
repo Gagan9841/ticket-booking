@@ -5,6 +5,7 @@
         <table class="table table-responsive table-striped">
             <thead>
                 <tr>
+
                     <td>Movie Name</td>
                     <td>Seats</td>
                     <td>Show TIme</td>
@@ -29,5 +30,4 @@
         </table>
     </div>
 </div>
-
 @endsection

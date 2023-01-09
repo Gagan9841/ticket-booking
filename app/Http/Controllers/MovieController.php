@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Show;
+use App\Models\TicketRate;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -139,7 +140,8 @@ class MovieController extends Controller
         // $shows = Show::get('id')->where('id',$movies->show_id);
         // return $shows;
         $shows = Show::where(['id','show_time']);
-        return view('movieBook', compact(['movies']));
+        $rate = TicketRate::get();
+        return view('movieBook', compact(['movies','rate']));
         // return view("movieBook", compact([
         //     'categories', 'shows'
         // ]));

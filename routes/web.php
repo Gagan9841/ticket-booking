@@ -8,6 +8,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TicketRateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+Route::get('/home', [MovieController::class, 'userIndex']);
 Route::get('/now-showing', [MovieController::class, 'show']);
-    Route::get('/home', [MovieController::class, 'userIndex']);
+Route::get('/home/ticket-rate', [TicketRateController::class, 'userIndex']);
     Route::get('/home/movie/{movies}/bookNow', [TicketController::class, 'create'])->name('ticket.book');
 
 
@@ -59,11 +61,21 @@ Route::middleware('admin')->group(function () {
     Route::patch('/admin/movies/{movie}/movieUpdate', [MovieController::class, 'update'])->name('movies.update');
     Route::delete('/admin/movies/{movie}/movieDelete', [MovieController::class, 'destroy'])->name('movies.delete');
 
+    Route::get('/admin/ticket-rate', [TicketRateController::class, 'index']);
+    Route::get('/admin/ticket-rate/rateCreate', [TicketRateController::class, 'create']);
+    Route::post('/admin/ticket-rate/rateAdd', [TicketRateController::class, 'store']);
+    Route::get('/admin/ticket-rate/{rate}/rateEdit', [TicketRateController::class, 'edit'])->name('rate.edit');
+    Route::patch('/admin/ticket-rate/{rate}/rateUpdate', [TicketRateController::class, 'update'])->name('rate.update');
+    Route::delete('/admin/ticket-rate/{rate}/rateDelete', [TicketRateController::class, 'destroy'])->name('rate.delete');
+
+
+
 
     Route::get('/admin/users', [ProfileController::class, 'index']);
 
 });
     Route::middleware('user')->group(function () {
+Route::get('/home', [MovieController::class, 'userIndex']);
     Route::post('/home/movie/booked', [TicketController::class, 'store']);
     Route::get('/home/tickets', [TicketController::class, 'index']);
 });

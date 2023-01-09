@@ -9,15 +9,18 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">Image</th>
+            <th scope="col">S.N</th>
             <th scope="col">Category Name</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
+            @php
+                $sn =1
+            @endphp
             @foreach ($categories as $category )
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">{{$sn++}}</th>
               <td>{{$category->name}}</td>
               <td><a class="btn btn-success me-1" href="{{route("category.edit",$category->id)}}"><i class="bi bi-pencil-square"></i></a>
                 <form class="d-inline-block" action="{{route('category.delete',$category->id)}}" method="post">

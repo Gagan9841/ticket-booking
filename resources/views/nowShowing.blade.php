@@ -8,7 +8,7 @@
         <div class="card-body">
             <figure class="movie">
                 <div class="movie__hero">
-                  <img src="/{{$movie->movie_img}}" alt="movie-image" class="movie__img">
+                  <img src="{{$movie->movie_img}}" alt="movie-image" class="movie__img">
                 </div>
                 <div class="movie__content">
                   <div class="movie__title">

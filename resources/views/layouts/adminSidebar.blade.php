@@ -21,6 +21,10 @@
                 <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Movies</span> </a>
           </li>
           <li>
+            <a href="/admin/ticket-rate" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Ticket Rates</span> </a>
+          </li>
+          <li>
             <a href="/admin/users" class="nav-link px-0 align-middle">
                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
           </li>

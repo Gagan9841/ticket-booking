@@ -12,7 +12,13 @@
       Show Time *: <select name="show_time" id="show_time">
           <option value="{{ $movies->show_id }}{{ ($shows[0]->id == $movies->show_id) ? 'selected' : '' }}">{{$shows[0]->show_time}}</option>
         </select></br>
-      Number of Seats *: <input class="mt-2" type="number" id="Numseats" required>
+      Number of Seats *: <input class="mt-2" type="number" id="Numseats" name="num_of_seat" required>
+      Ticket Rate *:
+      <select name="ticket_rate" id="ticket_rate">
+        @foreach ($rate as $price )
+        <option value="{{$price->rate}}">{{$price->rate}}</option>
+        @endforeach
+      </select>
       <br/><br/>
       <button type="button" class="btn btn-warning mb-2" onclick="takeData()">Start Selecting</button>
     </center>
@@ -242,6 +248,7 @@
         <th>Movie</th>
         <th>Number of Seats</th>
         <th>Seats</th>
+        <th>Total Price</th>
       </tr>
       <tr>
         <td><textarea  id="nameDisplay"></textarea>
@@ -253,6 +260,9 @@
         </td>
         <td><textarea id="NumberDisplay"></textarea></td>
         <td><textarea name="seat[]" id="seatsDisplay"></textarea></td>
+        <td><textarea name="price" id="rateDisplay"></textarea></td>
+        {{-- <input type="hidden" name="price" value="{{$rate->id}}"> --}}
+
       </tr>
     </table>
     <br/><button type="submit" class="btn submit btn-success" value="Book Seat">Book Seat</button>
