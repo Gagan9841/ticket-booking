@@ -99,4 +99,11 @@ class TicketRateController extends Controller
         return redirect()->back()->with('warning',"Ticket deleted successfully.");
     }
 
+    public function userIndex(){
+        $tickets = TicketRate::get();
+
+        return view('ticket-rate', compact('tickets'));
+
+    }
+
 }
