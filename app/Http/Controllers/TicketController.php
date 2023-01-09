@@ -15,9 +15,16 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Show $show)
     {
-        return view('tickets');
+        $tickets = Ticket::with(['movie','show'])->get();
+        // return $tickets;
+        $ticket_showtime = $tickets[0]->show_time;
+        $show = Show::whereId($ticket_showtime)->get();
+        // return $ticket_showtime;
+        // return $ticket_showtime;
+        // return $show;
+        return view('tickets',compact(['tickets','show']));
     }
 
     /**

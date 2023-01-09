@@ -12,7 +12,11 @@ class Ticket extends Model
     protected $fillable = ['ticket_no', 'user_id', 'movie_id', 'show_time', 'seat_no' ];
 
     public function movie(){
-        return $this->belongsTo(Movie::class,'movie_id','id');
+        return $this->belongsTo(Movie::class);
+    }
+
+    public function show(){
+        return $this->belongsTo(Show::class);
     }
 
 }

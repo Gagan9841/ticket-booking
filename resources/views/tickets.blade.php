@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <table>
+        <table class="table table-responsive table-striped">
             <thead>
                 <tr>
 
@@ -13,12 +13,14 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ( $tickets as $ticket )
                 <tr>
-                    <td>hello</td>
-                    <td>hello</td>
-                    <td>hello</td>
-                    <td>hello</td>
-                </tr>
+                    <td>{{$ticket->movie->name}}</td>
+                    <td>{{$ticket->seat_no}}</td>
+                    <td>{{$show[0]->show_time}}</td>
+                    <td>{{$ticket->created_at}}</td>
+                    </tr>
+                    @endforeach
             </tbody>
         </table>
     </div>

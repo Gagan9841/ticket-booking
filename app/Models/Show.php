@@ -14,4 +14,8 @@ class Show extends Model
     public function movie(){
         return $this->belongsToMany(Movie::class);
     }
+
+    public function ticket(){
+        return $this->hasMany(Ticket::class);
+    }
 }

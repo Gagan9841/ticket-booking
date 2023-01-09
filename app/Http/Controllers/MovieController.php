@@ -83,7 +83,8 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        $movies = Movie::where('status', 'Now Showing')->with('category','show')->get();
+        return view('nowShowing', compact('movies'));
     }
 
     /**

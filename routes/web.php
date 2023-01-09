@@ -22,19 +22,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-// Route::get('/home', function () {
-//     return view('home');
-// });
-Route::get('/home', [MovieController::class, 'userIndex']);
+
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/admin/dahsboard', function () {
-//     return view('admin.dashboard');
-// })->name('admin')->middleware('admin');
+
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin/dashboard', function () {
@@ -66,6 +61,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/users', [ProfileController::class, 'index']);
 
 });
+    Route::get('    /now-showing', [MovieController::class, 'show']);
+    Route::get('/home', [MovieController::class, 'userIndex']);
+
 
 Route::middleware('user')->group(function () {
     Route::get('/home/movie/{movies}/bookNow', [TicketController::class, 'create'])->name('ticket.book');
