@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+@auth
 <body onload="onLoaderFunc()">
     <form action="/home/movie/booked" method="post">
         @csrf
@@ -259,8 +260,14 @@
 
     </div>
     </form>
+    @endauth
+    @guest
 
-
-
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <span class="btn btn-secondary">Please login to Book the ticket</span>
+        </div>
+    </div>
+    @endguest
     @endsection
 

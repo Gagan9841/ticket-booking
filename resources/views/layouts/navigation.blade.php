@@ -107,17 +107,18 @@
             <a class="nav-link" href="/home">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/now-showing">Now Showin</a>
+            <a class="nav-link" href="/now-showing">Now Showing</a>
           </li>
+          @guest
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Ticket Rate</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
+              <a class="nav-link" href="/home/ticket-rate">Ticket Rate</a>
+            </li>
+            @endguest
+            @auth
+            <li class="nav-item">
+                <a class="nav-link" href="/home/tickets">My tickets</a>
+              </li>
+            @endauth
         </ul>
         <ul class="navbar-nav ms-auto">
             @guest
@@ -130,24 +131,12 @@
         </ul>
             @endguest
             @auth
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" href=""><span>{{ auth()->user()->name }}</span></a>
-                        <ul>
-                            <li>
-                                <a class="dropdown-item" href="/profile/{{ auth()->user()->name }}"><span>My Profile</span></a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href=""
-                                   onclick="event.preventDefault();document.getElementById('logout-user').submit();">Logout</a>
-                            </li>
-                        </ul>
-                        <form action="{{ route('logout') }}" method="post" id="logout-user"
-                              style="display: none;">
-                            @csrf
+            <li class="nav-item">
+                <form class="nav-link " action="{{ route('logout') }}" method="post" id="logout-user">
+                    @csrf
+                    <button class="btn btn-danger" type="submit">Log Out</button>
                         </form>
-                    </li>
-                </ul>
+              </li>
             @endauth
         </ul>
       </div>

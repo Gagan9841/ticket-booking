@@ -253,3 +253,6 @@ input[type=checkbox]:checked:before {
     background-color:Green;
     font-size: 15px;
 }
+.count{
+    font-size: 2rem !important;
+}

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Show;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 
 class TicketController extends Controller
 {

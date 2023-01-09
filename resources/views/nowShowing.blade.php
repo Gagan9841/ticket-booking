@@ -8,7 +8,7 @@
         <div class="card-body">
             <figure class="movie">
                 <div class="movie__hero">
-                  <img src="https://www.mensjournal.com/wp-content/uploads/2018/10/rambo-main-3.jpg?quality=86&strip=all" alt="Rambo" class="movie__img">
+                  <img src="/{{$movie->movie_img}}" alt="movie-image" class="movie__img">
                 </div>
                 <div class="movie__content">
                   <div class="movie__title">

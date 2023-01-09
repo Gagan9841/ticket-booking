@@ -1,4 +1,4 @@
-    @extends('layouts.main')
+@extends('layouts.main')
     @section('content')
     <div id="carouselExampleIndicators" class="carousel slide mb-2 " data-ride="carousel">
     <ol class="carousel-indicators">
@@ -40,12 +40,11 @@
 
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                   @foreach ( $movies as $movie)
-                  @guest
                 @if ($movie->status==="Now Showing")
                 <div class="card-body">
                     <figure class="movie">
                         <div class="movie__hero">
-                            <img src="https://www.mensjournal.com/wp-content/uploads/2018/10/rambo-main-3.jpg?quality=86&strip=all" alt="Rambo" class="movie__img">
+                            <img src="/{{$movie->movie_img}}" alt="movie-image" class="movie__img">
                         </div>
                         <div class="movie__content">
                           <div class="movie__title">
@@ -60,7 +59,6 @@
                       </figure>
                     </div>
                 @endif
-                @endguest
                 @endforeach
             </div>
             </div>
@@ -95,3 +93,4 @@
           </div>
     </div>
 @endsection
+
