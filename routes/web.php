@@ -60,6 +60,8 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/movies/{movie}/movieEdit', [MovieController::class, 'edit'])->name('movies.edit');
     Route::patch('/admin/movies/{movie}/movieUpdate', [MovieController::class, 'update'])->name('movies.update');
     Route::delete('/admin/movies/{movie}/movieDelete', [MovieController::class, 'destroy'])->name('movies.delete');
+    Route::delete('/admin/movies/{movie}/movieUpdate/deleteImage', [MovieController::class, 'destroyImage']);
+
 
     Route::get('/admin/ticket-rate', [TicketRateController::class, 'index']);
     Route::get('/admin/ticket-rate/rateCreate', [TicketRateController::class, 'create']);
@@ -75,7 +77,7 @@ Route::middleware('admin')->group(function () {
 
 });
     Route::middleware('user')->group(function () {
-Route::get('/home', [MovieController::class, 'userIndex']);
+    Route::get('/home', [MovieController::class, 'userIndex']);
     Route::post('/home/movie/booked', [TicketController::class, 'store']);
     Route::get('/home/tickets', [TicketController::class, 'index']);
 });

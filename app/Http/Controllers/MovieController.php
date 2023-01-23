@@ -134,6 +134,13 @@ class MovieController extends Controller
         return redirect()->back()->with('warning',"Movie deleted successfully.");
     }
 
+    public function destroyImage(Movie $movie)
+    {
+        return $movie;
+         $movie->delete();
+        return redirect()->back()->with('warning',"Movie deleted successfully.");
+    }
+
     public function ticketBook(Movie $movies)
     {
         // return $movies;

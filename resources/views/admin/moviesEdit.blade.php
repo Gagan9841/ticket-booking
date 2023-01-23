@@ -48,8 +48,7 @@
     </div>
     <div class="col-6">
         <img src="{{$movie->movie_img}}" alt="movie-img" width="50px" height="50px">
-            <input type="checkbox" name="delete_img" value="img_delete">
-        <label for="movie_img">Display Image</label>
+
             <input type="file" class="form-control" name="movie_img" id="movie_img">
 
     </div>
@@ -57,5 +56,11 @@
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </form>
+  <form action="movieUpdate/deleteImage" method="POST">
+    @csrf
+    @method('PATCH')
+    <button type="submit" name="delete_img" value="img_delete">Delete Image</button>
+<label for="movie_img">Delete Image</label>
+    </form>
 </div>
 @endsection
